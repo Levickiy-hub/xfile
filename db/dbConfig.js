@@ -17,7 +17,8 @@ const Organizations = sequelize.define(
         email: {type: Sequelize.STRING},
         address: {type: Sequelize.STRING},
         phone: {type: Sequelize.STRING},
-        type: {type: Sequelize.STRING}
+        type: {type: Sequelize.STRING},
+        LogSystemType: {type: Sequelize.STRING}
     },
     {
         // Здесь определяются другие настройки модели
@@ -47,7 +48,45 @@ const Users = sequelize.define(
     }
 )
 Users.sync({alter: true}).then(r =>console.log('Users Create')).catch(err=>console.error(err.message))
-
+const Requests = sequelize.define(
+    'Requests',
+    {
+        id:{type: Sequelize.INTEGER,
+            autoIncrement:true,
+            allowNull:false,
+            primaryKey: true
+        },
+        userId: {type: Sequelize.INTEGER},
+        organizationId: {type: Sequelize.INTEGER},
+        whom: {type: Sequelize.INTEGER},
+        text: {type: Sequelize.STRING},
+        description: {type: Sequelize.STRING},
+        alertType: {type: Sequelize.STRING},
+        status: {type: Sequelize.STRING},
+    },
+    {
+        // Здесь определяются другие настройки модели
+    }
+)
+Requests.sync({alter: true}).then(r =>console.log('Requests Create')).catch(err=>console.error(err.message))
+const Answers = sequelize.define(
+    'Answers',
+    {
+        id:{type: Sequelize.INTEGER,
+            autoIncrement:true,
+            allowNull:false,
+            primaryKey: true
+        },
+        requestId: {type: Sequelize.INTEGER},
+        text: {type: Sequelize.INTEGER},
+        file: {type: Sequelize.INTEGER},
+        description: {type: Sequelize.STRING},
+    },
+    {
+        // Здесь определяются другие настройки модели
+    }
+)
+Answers.sync({alter: true}).then(r =>console.log('Answers Create')).catch(err=>console.error(err.message))
 module.exports = {
-    sequelize, Users,Organizations
+    sequelize, Users,Organizations,Requests,Answers
 }
