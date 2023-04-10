@@ -20,7 +20,6 @@ const Organizations = sequelize.define(
         Address2: {type: Sequelize.STRING},
         Postcode: {type: Sequelize.STRING},
         Post_town: {type: Sequelize.STRING},
-        phone: {type: Sequelize.STRING},
         Billing_address1: {type: Sequelize.STRING},
         Billing_address2: {type: Sequelize.STRING},
         Billing_postcode: {type: Sequelize.STRING},
@@ -130,6 +129,22 @@ const Resend = sequelize.define(
     }
 )
 Resend.sync({alter: true}).then(r =>console.log('Resend Create')).catch(err=>console.error(err.message))
+const Logins_BankID = sequelize.define(
+    'Logins_BankID',
+    {
+        id:{type: Sequelize.INTEGER,
+            autoIncrement:true,
+            allowNull:false,
+            primaryKey: true
+        },
+        UserID: {type: Sequelize.INTEGER},
+        Response: {type: Sequelize.STRING},
+    },
+    {
+        // Здесь определяются другие настройки модели
+    }
+)
+Logins_BankID.sync({alter: true}).then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
 module.exports = {
-    sequelize, Users,Organizations,Orders,Cases,Resend
+    sequelize, Users,Organizations,Orders,Cases,Resend,Logins_BankID
 }

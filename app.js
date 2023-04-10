@@ -8,10 +8,10 @@ app.use(bodyParser.json());
 
 // Define routes
 const indexRouter = require('./routes/indexRoute');
-// const usersRouter = require('./controllers/usersController');
+const usersRouter = require('./routes/usersRoute');
 //
 app.use('/1', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/users1', usersRouter);
 
 // Start the server
 app.listen(3000, () => {
