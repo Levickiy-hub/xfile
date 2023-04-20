@@ -36,7 +36,7 @@ const Organizations = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 );
-Organizations.sync({alter: true}).then(r =>console.log('Organizations Create')).catch(err=>console.error(err.message))
+Organizations.sync().then(r =>console.log('Organizations Create')).catch(err=>console.error(err.message))
 
 const Users = sequelize.define(
     'Users',
@@ -64,7 +64,7 @@ const Users = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 )
-Users.sync({alter: true}).then(r =>console.log('Users Create')).catch(err=>console.error(err.message))
+Users.sync().then(r =>console.log('Users Create')).catch(err=>console.error(err.message))
 const Orders = sequelize.define(
     'Orders',
     {
@@ -88,7 +88,7 @@ const Orders = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 )
-Orders.sync({alter: true}).then(r =>console.log('Orders Create')).catch(err=>console.error(err.message))
+Orders.sync().then(r =>console.log('Orders Create')).catch(err=>console.error(err.message))
 const Cases = sequelize.define(
     'Cases',
     {
@@ -107,7 +107,7 @@ const Cases = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 )
-Cases.sync({alter: true}).then(r =>console.log('Cases Create')).catch(err=>console.error(err.message))
+Cases.sync().then(r =>console.log('Cases Create')).catch(err=>console.error(err.message))
 const Resend = sequelize.define(
     'Resend',
     {
@@ -128,7 +128,7 @@ const Resend = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 )
-Resend.sync({alter: true}).then(r =>console.log('Resend Create')).catch(err=>console.error(err.message))
+Resend.sync().then(r =>console.log('Resend Create')).catch(err=>console.error(err.message))
 const Logins_BankID = sequelize.define(
     'Logins_BankID',
     {
@@ -144,7 +144,7 @@ const Logins_BankID = sequelize.define(
         // Здесь определяются другие настройки модели
     }
 )
-Logins_BankID.sync({alter: true}).then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
+Logins_BankID.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
 module.exports = {
     sequelize, Users,Organizations,Orders,Cases,Resend,Logins_BankID
 }
