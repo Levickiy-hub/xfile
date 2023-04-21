@@ -16,13 +16,13 @@ async function postOrder(req,res){
             if(!organizationDB) {
                 organizationDB = await db.createOrganization(null,creator.org.organisation,creator.Faktureringsadress.orgNr,
                     creator.org.orgAdress1,creator.org.orgAdress1,creator.org.orgPostnummer,creator.org.orgOrt, creator.Faktureringsadress.fakturAdress1,
-                    creator.Faktureringsadress.fakturAdress1,creator.Faktureringsadress.fakturPostnummer,creator.Faktureringsadress.fakturOrt,creator.Faktureringsadress.fakturEmail,creator.Faktureringsadress.fakturTel,
-                    creator.org.orgTel,null,null,null,null)
+                    creator.Faktureringsadress.fakturAdress1,creator.Faktureringsadress.fakturPostnummer,creator.Faktureringsadress.fakturOrt,creator.Faktureringsadress.fakturEmail,creator.org.orgTel,
+                    creator.Faktureringsadress.fakturTel,null,null,null,null)
             }
             creatorDB = await db.createUser(creator.person.fornamn,creator.person.efternamn,creator.person.personnummer,creator.person.telNr,null,
                 null,null,null,creator.person.email,null,null,organizationDB.id,creator.person.befattning)
         }
-        const response = await db.createOrder(creatorDB.id,1,patientDB.id,'','',type.toString(),message,alertType.toString(),'waite')
+        const response = await db.createOrder(creatorDB.id,1,patientDB.id,'','',type.toString(),message,alertType.toString(),'waite',mailingAddress)
         res.send(response);
     }
 }

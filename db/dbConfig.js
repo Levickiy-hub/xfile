@@ -26,7 +26,7 @@ const Organizations = sequelize.define(
         Billing_post_town: {type: Sequelize.STRING},
         Billing_email: {type: Sequelize.STRING},
         Phone: {type: Sequelize.STRING},
-        Mob_number: {type: Sequelize.STRING},
+        Billing_Phone: {type: Sequelize.STRING},
         Type: {type: Sequelize.STRING},
         Payment_plan: {type: Sequelize.STRING},
         Journal_system: {type: Sequelize.STRING},
@@ -58,7 +58,6 @@ const Users = sequelize.define(
         Role: {type: Sequelize.STRING},
         Position: {type: Sequelize.STRING},
         OrganizationID: {type: Sequelize.INTEGER}
-
     },
     {
         // Здесь определяются другие настройки модели
@@ -83,6 +82,7 @@ const Orders = sequelize.define(
         Order_Message: {type: Sequelize.STRING},
         Alert_Type: {type: Sequelize.STRING},
         Status: {type: Sequelize.STRING},
+        mailingAddress: {type: Sequelize.STRING},
     },
     {
         // Здесь определяются другие настройки модели
