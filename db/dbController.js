@@ -6,7 +6,7 @@ async function getAllUsers(){
 async function getUserByBankId(BankId){
     return await db.Users.findOne({where: {Personal_number:BankId}})
 }
-async function createUser(First_name,Last_name,Personal_number,Mob_number,Address1,Address2,Postcode,Post_town,Email,Role,Billing_address1,OrganizationID,Position){
+async function createUser(First_name,Last_name,Personal_number,Mob_number,Address1,Address2,Postcode,Post_town,Email,Role,OrganizationID,Position){
    return await db.Users.create({First_name:First_name,Last_name:Last_name,Personal_number:Personal_number,Mob_number:Mob_number,Address1:Address1,Address2:Address2,
        Postcode:Postcode,Post_town:Post_town,Email:Email,Role:Role,OrganizationID:OrganizationID,Position:Position})
 }

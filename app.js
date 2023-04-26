@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const app = express();
+app.use(fileUpload({}))
 app.use(cors({
     origin:'*',
     credentials:true,            //access-control-allow-credentials:true
@@ -17,10 +19,12 @@ app.use(bodyParser.json());
 const indexRouter = require('./routes/indexRoute');
 const usersRouter = require('./routes/usersRoute');
 const ordersRouter = require('./routes/orderRoute');
+const filesRouter = require('./routes/filesRoute');
 //
-app.use('/1', indexRouter);
-app.use('/users', usersRouter);
-app.use('/orders', ordersRouter);
+app.use('/api/1', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/orders', ordersRouter);
+app.use('/api/files', filesRouter);
 
 // Start the server
 app.listen(3002, () => {
