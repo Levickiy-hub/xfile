@@ -6,7 +6,12 @@ async function postUser(req,res){
 async function getAllUsers(req,res){
     res.send(await db.getAllUsers());
 }
+async function getUser(req,res){
+    const {number}=req.query
+    console.log(number)
+    res.send(await db.getUserByBankId(number)||{});
+}
 
 module.exports={
-    postUser,getAllUsers
+    postUser,getAllUsers,getUser
 }

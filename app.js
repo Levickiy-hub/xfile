@@ -18,11 +18,13 @@ app.use(bodyParser.json());
 // Define routes
 const indexRouter = require('./routes/indexRoute');
 const usersRouter = require('./routes/usersRoute');
+const organizationsRouter = require('./routes/organizationRoute');
 const ordersRouter = require('./routes/orderRoute');
 const filesRouter = require('./routes/filesRoute');
 //
 app.use('/api/1', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/organizations', organizationsRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/files', filesRouter);
 

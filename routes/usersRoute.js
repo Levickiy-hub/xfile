@@ -7,8 +7,12 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    await controller.getAllUsers(req,res)
+    if(req.query.number)
+        await controller.getUser(req,res)
+    else
+        await controller.getAllUsers(req,res)
 });
+
 
 router.get('/:id', async (req, res) => {
     await controller.getAllUsers(req,res)
