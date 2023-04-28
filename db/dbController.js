@@ -14,7 +14,7 @@ async function createOrganization(Clinic_name,Org_name,Org_number,Email,Address1
                                   Billing_address1,Billing_address2,Billing_postcode,Billing_post_town,Billing_email,Phone,Billing_phone,Type,Payment_plan,Journal_system,Xray_system){
     return await db.Organizations.create({Clinic_name:Clinic_name,Organization_name:Org_name,Organization_number:Org_number,Email:Email,Address1:Address1,Address2:Address2,Postcode:Postcode,Post_town:Post_town,
         Billing_address1:Billing_address1,Billing_address2:Billing_address2,Billing_postcode:Billing_postcode,Billing_post_town:Billing_post_town,
-        Billing_email:Billing_email,Phone:Phone,Billing_phone:Billing_phone,Type:Type,Payment_plan:Payment_plan,Journal_system:Journal_system,Xray_system:Xray_system})
+        Billing_email:Billing_email,Phone:Phone,Billing_Phone:Billing_phone,Type:Type,Payment_plan:Payment_plan,Journal_system:Journal_system,Xray_system:Xray_system})
 }
 async function getAllOrganization(){
     return await db.Organizations.findAll()

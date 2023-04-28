@@ -9,7 +9,7 @@ async function getAllUsers(req,res){
 async function getUser(req,res){
     const {number}=req.query
     console.log(number)
-    res.send(await db.getUserByBankId(number)||{});
+    res.send(await db.getUserByBankId(number)|| null );
 }
 
 module.exports={

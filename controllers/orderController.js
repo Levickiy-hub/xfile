@@ -15,7 +15,7 @@ async function postOrder(req,res){
             let organizationDB = await db.getOrganizationByName(creator.Organization_name)
             if(!organizationDB) {
                 organizationDB = await db.createOrganization(null,creator.Organization_name,creator.Organization_number,creator.org.Email,
-                    creator.org.Adress1,creator.org.Ev,creator.org.Postcode,creator.org.Post_town, creator.Billing.Address1,
+                    creator.org.Address1,creator.org.Ev,creator.org.Postcode,creator.org.Post_town, creator.Billing.Address1,
                     creator.Billing.Ev,creator.Billing.Postcode,creator.Billing.Post_town,creator.Billing.Email,creator.org.Phone,
                     creator.Billing.Phone,null,null,null,null)
             }
