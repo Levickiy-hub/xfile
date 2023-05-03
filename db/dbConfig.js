@@ -31,6 +31,7 @@ const Organizations = sequelize.define(
         Payment_plan: {type: Sequelize.STRING},
         Journal_system: {type: Sequelize.STRING},
         Xray_system: {type: Sequelize.STRING},
+        Billing_reference:{type: Sequelize.STRING},
     },
     {
         // Здесь определяются другие настройки модели
