@@ -1,4 +1,4 @@
-import {LOGIN_MAIL, PASSWORD_MAIL} from "../config/configMailer";
+const {LOGIN_MAIL, PASSWORD_MAIL} = require( "../config/configMailer");
 //включить разрешение в аккаунте гугла
 const nodemailer = require('nodemailer')
 
@@ -10,10 +10,16 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-const mailOptions ={
-    from:'', //откого
-    to:'', //кому
-    subject:'', // тема
-    text:'' //сообщение
+function sendMail(to,subject='',text=''){
+
+    const mailOptions ={
+        from:'levickiysyava@gmail.com', //откого
+        to:to, //кому
+        subject:subject, // тема
+        text:text //сообщение
+    }
+    transporter.sendMail(mailOptions) // второй параметр ф-я для обработки ошибок
 }
-transporter.sendMail(mailOptions)
+module.exports={
+    sendMail
+}

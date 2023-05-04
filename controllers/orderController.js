@@ -1,4 +1,5 @@
 const db = require('../db/dbController')
+const {sendMail} = require("../mailer/mailer");
 const {getOrCreatePatient,
     getOrCreateOrganization,
     getOrCreateUser,
@@ -15,6 +16,7 @@ async function postOrder(req,res) {
         }
         // Create order
         const response = await createOrder(creatorDB, patientDB, type,proxy,messageFile, message, alertType, mailingAddress);
+        sendMail(patientDB.Email,'re','123456')
         res.send(response);
     } catch (error) {
         console.error(error);
