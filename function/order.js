@@ -69,10 +69,10 @@ async function getOrCreateUser(creator, organizationDB) {
     }
 
 // Create order
-async function createOrder(creatorDB={}, patientDB={}, type,proxy,messageFile, message, alertType, mailingAddress) {
+async function createOrder(clinicId,creatorDB={}, patientDB={}, type,proxy,messageFile, message, alertType, mailingAddress) {
     const response = await db.createOrder(
         creatorDB.id,
-        1,
+        clinicId,
         patientDB.id,
         "",
         getMessageFile(proxy),

@@ -6,7 +6,7 @@ const {getOrCreatePatient,
     createOrder} = require('../function/order')
 async function postOrder(req,res) {
     try {
-        const {patient, whose, type, message, messageFile, alertType, creator, mailingAddress,proxy} = req.body;
+        const {clinic,patient, whose, type, message, messageFile, alertType, creator, mailingAddress,proxy} = req.body;
         const patientDB = await getOrCreatePatient(patient)
         let creatorDB = {}
         if(whose===2) {
@@ -15,7 +15,7 @@ async function postOrder(req,res) {
             creatorDB = await getOrCreateUser(creator, organizationDB);
         }
         // Create order
-        const response = await createOrder(creatorDB, patientDB, type,proxy,messageFile, message, alertType, mailingAddress);
+        const response = await createOrder(clinic,creatorDB, patientDB, type,proxy,messageFile, message, alertType, mailingAddress);
         sendMail(patientDB.Email,'re','123456')
         res.send(response);
     } catch (error) {

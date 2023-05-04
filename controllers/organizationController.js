@@ -12,7 +12,10 @@ async function getOrganizationById(req,res){
     const {id}=req.params;
     res.send(await db.getOrganizationById(id));
 }
-
+async function getAllOrganizationByType(req,res){
+    const {type}=req.query
+    res.send(await db.getOrganizationByType(type))
+}
 module.exports={
-    postOrganization,getAllOrganization,getOrganizationById
+    postOrganization,getAllOrganization,getOrganizationById,getAllOrganizationByType
 }

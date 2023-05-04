@@ -25,6 +25,9 @@ async function getOrganizationByName(name){
 async function getOrganizationById(id){
     return await db.Organizations.findOne({where: {id: id}})
 }
+async function getOrganizationByType(type){
+    return await db.Organizations.findAll({where: {Type: type}})
+}
 async function createOrder(Creator_UserID,OrganizationID,PatientID,Permission_BankID,Permission_file,Order_docs_list,Order_Message,Alert_Type,Status='waite',mallingAddress){
     return await db.Orders.create({Creator_UserID:Creator_UserID,OrganizationID:OrganizationID,PatientID:PatientID,Permission_BankID:Permission_BankID,
         Permission_file:Permission_file,Order_docs_list:Order_docs_list,Order_Message:Order_Message,Alert_Type:Alert_Type,Status:Status,mailingAddress:mallingAddress})
@@ -40,4 +43,4 @@ async function getOrdersByOrganization(organizationID){
 }
 
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
-    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById}
+    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType}
