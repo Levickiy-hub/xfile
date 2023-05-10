@@ -146,6 +146,23 @@ const Logins_BankID = sequelize.define(
     }
 )
 Logins_BankID.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
+// Определение ассоциаций
+
+// Organizations.hasMany(Orders, { foreignKey: "OrganizationID", as: "orders" });
+// Orders.belongsTo(Organizations, { foreignKey: "OrganizationID", as: "organization" });
+//
+// Users.hasMany(Orders, { foreignKey: "PatientID", as: "orders" });
+// Orders.belongsTo(Users, { foreignKey: "PatientID", as: "patient" });
+//
+// Users.hasMany(Orders, { foreignKey: "Creator_UserID", as: "createdOrders" });
+// Orders.belongsTo(Users, { foreignKey: "Creator_UserID", as: "creator" });
+// Users.belongsTo(Organizations, { foreignKey: 'OrganizationID', as: 'organization' });
+Users.hasOne(Organizations,{ foreignKey: 'OrganizationID'})
+Orders.hasOne(Organizations,{foreignKey: 'OrganizationID', as: "organization"})
+Orders.hasOne(Users,{foreignKey: 'Creator_UserID', as: "creator" })
+Orders.hasOne(Users,{foreignKey: 'PatientID', as: "patient" })
+
+
 module.exports = {
     sequelize, Users,Organizations,Orders,Cases,Resend,Logins_BankID
 }

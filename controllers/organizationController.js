@@ -8,6 +8,11 @@ async function postOrganization(req,res){
 async function getAllOrganization(req,res){
     res.send(await db.getAllOrganization());
 }
+async function getOrdersByOrganization(req,res){
+    const {id}=req.params;
+    const orders = await db.getOrdersByOrganization(id)
+    res.send(orders[0]);
+}
 async function getOrganizationById(req,res){
     const {id}=req.params;
     res.send(await db.getOrganizationById(id));
@@ -17,5 +22,6 @@ async function getAllOrganizationByType(req,res){
     res.send(await db.getOrganizationByType(type))
 }
 module.exports={
-    postOrganization,getAllOrganization,getOrganizationById,getAllOrganizationByType
+    postOrganization,getAllOrganization,getOrganizationById,getAllOrganizationByType,
+    getOrdersByOrganization
 }
