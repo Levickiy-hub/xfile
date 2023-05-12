@@ -11,6 +11,6 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    await controller.getAllOrganization(req,res)
+    await controller.getOrderById(req,res)
 });
 module.exports = router;

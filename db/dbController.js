@@ -33,7 +33,10 @@ async function createOrder(Creator_UserID,OrganizationID,PatientID,Permission_Ba
         Permission_file:Permission_file,Order_docs_list:Order_docs_list,Order_Message:Order_Message,Alert_Type:Alert_Type,Status:Status,mailingAddress:mallingAddress})
 }
 async function getOrdersByUser(userID){
-    return await db.Organizations.findAll({where: {Creator_UserID:userID}})
+    return await db.Orders.findAll({where: {Creator_UserID:userID}})
+}
+async function getOrdersById(id){
+    return await db.Orders.findOne({where: {id:id}})
 }
 async function getOrdersByPatient(userID){
     return await db.Orders.findAll({where: {PatientID:userID}})
@@ -46,4 +49,5 @@ async function getOrdersByOrganization(organizationID){
 }
 
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
-    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType}
+    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType,
+    getOrdersById}

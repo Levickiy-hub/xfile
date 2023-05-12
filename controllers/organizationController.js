@@ -11,7 +11,13 @@ async function getAllOrganization(req,res){
 async function getOrdersByOrganization(req,res){
     const {id}=req.params;
     const orders = await db.getOrdersByOrganization(id)
-    res.send(orders[0]);
+    console.log(orders)
+    const response = orders[0].map(order =>
+        order.Organization_name?
+            order:
+            {...order,Organization_name:'Patient'}
+    )
+    res.send(response);
 }
 async function getOrganizationById(req,res){
     const {id}=req.params;

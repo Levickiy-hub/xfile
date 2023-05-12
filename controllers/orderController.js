@@ -26,7 +26,12 @@ async function postOrder(req,res) {
 async function getAllOrganization(req,res){
     res.send(await db.getAllOrganization());
 }
+async function getOrderById(req,res){
+    const {id}=req.params;
+    const order = await db.getOrdersById(id)
+    res.send(order);
+}
 
 module.exports={
-    postOrder,getAllOrganization
+    postOrder,getOrderById,getAllOrganization
 }
