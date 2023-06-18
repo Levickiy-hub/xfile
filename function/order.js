@@ -76,8 +76,9 @@ async function createOrder(clinicId,creatorDB={}, patientDB={}, type,proxy,messa
         patientDB.id,
         "",
         getMessageFile(proxy),
-        getMessageFile(messageFile),
+        type.toString(),
         message,
+        getMessageFile(messageFile),
         alertType.toString(),
         'wait',
         JSON.stringify(mailingAddress)

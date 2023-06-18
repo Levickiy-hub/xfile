@@ -10,6 +10,9 @@ async function createUser(First_name,Last_name,Personal_number,Mob_number,Addres
    return await db.Users.create({First_name:First_name,Last_name:Last_name,Personal_number:Personal_number,Mob_number:Mob_number,Address1:Address1,Address2:Address2,
        Postcode:Postcode,Post_town:Post_town,Email:Email,Role:Role,OrganizationID:OrganizationID,Position:Position})
 }
+async function getUsersById(id){
+    return await db.Users.findOne({where: {id:id}})
+}
 async function createOrganization(Clinic_name,Org_name,Org_number,Email,Address1,Address2,Postcode,Post_town,
                                   Billing_address1,Billing_address2,Billing_postcode,Billing_post_town,Billing_email,Phone,Billing_phone,Type,Payment_plan,Journal_system,Xray_system,Billing_reference){
     return await db.Organizations.create({Clinic_name:Clinic_name,Organization_name:Org_name,Organization_number:Org_number,Email:Email,Address1:Address1,Address2:Address2,Postcode:Postcode,Post_town:Post_town,
@@ -28,9 +31,9 @@ async function getOrganizationById(id){
 async function getOrganizationByType(type){
     return await db.Organizations.findAll({where: {Type: type}})
 }
-async function createOrder(Creator_UserID,OrganizationID,PatientID,Permission_BankID,Permission_file,Order_docs_list,Order_Message,Alert_Type,Status='waite',mallingAddress){
+async function createOrder(Creator_UserID,OrganizationID,PatientID,Permission_BankID,Permission_file,Order_docs_list,Order_Message,Order_Message_File,Alert_Type,Status='waite',mallingAddress){
     return await db.Orders.create({Creator_UserID:Creator_UserID,OrganizationID:OrganizationID,PatientID:PatientID,Permission_BankID:Permission_BankID,
-        Permission_file:Permission_file,Order_docs_list:Order_docs_list,Order_Message:Order_Message,Alert_Type:Alert_Type,Status:Status,mailingAddress:mallingAddress})
+        Permission_file:Permission_file,Order_docs_list:Order_docs_list,Order_Message:Order_Message,Order_Message_File:Order_Message_File,Alert_Type:Alert_Type,Status:Status,mailingAddress:mallingAddress})
 }
 async function getOrdersByUser(userID){
     return await db.Orders.findAll({where: {Creator_UserID:userID}})
@@ -50,4 +53,4 @@ async function getOrdersByOrganization(organizationID){
 
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
     getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType,
-    getOrdersById}
+    getOrdersById,getUsersById}

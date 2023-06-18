@@ -81,6 +81,7 @@ const Orders = sequelize.define(
         Permission_file: {type: Sequelize.STRING},
         Order_docs_list: {type: Sequelize.STRING},
         Order_Message: {type: Sequelize.STRING},
+        Order_Message_File: {type: Sequelize.STRING},
         Alert_Type: {type: Sequelize.STRING},
         Status: {type: Sequelize.STRING},
         mailingAddress: {type: Sequelize.STRING},
@@ -157,10 +158,10 @@ Logins_BankID.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>co
 // Users.hasMany(Orders, { foreignKey: "Creator_UserID", as: "createdOrders" });
 // Orders.belongsTo(Users, { foreignKey: "Creator_UserID", as: "creator" });
 // Users.belongsTo(Organizations, { foreignKey: 'OrganizationID', as: 'organization' });
-Users.hasOne(Organizations,{ foreignKey: 'OrganizationID'})
-Orders.hasOne(Organizations,{foreignKey: 'OrganizationID', as: "organization"})
-Orders.hasOne(Users,{foreignKey: 'Creator_UserID', as: "creator" })
-Orders.hasOne(Users,{foreignKey: 'PatientID', as: "patient" })
+// Users.hasOne(Organizations,{ foreignKey: 'OrganizationID'})
+// Orders.hasOne(Organizations,{foreignKey: 'OrganizationID', as: "organization"})
+// Orders.hasOne(Users,{foreignKey: 'Creator_UserID', as: "creator" })
+// Orders.hasOne(Users,{foreignKey: 'PatientID', as: "patient" })
 
 
 module.exports = {

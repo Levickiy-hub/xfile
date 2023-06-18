@@ -29,7 +29,9 @@ async function getAllOrganization(req,res){
 async function getOrderById(req,res){
     const {id}=req.params;
     const order = await db.getOrdersById(id)
-    res.send(order);
+    console.log(order.PatientID)
+    const patient = await db.getUsersById(order.PatientID)
+    res.send({order:order,patient:patient});
 }
 
 module.exports={
