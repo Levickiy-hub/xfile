@@ -44,6 +44,9 @@ async function getOrdersById(id){
 async function getOrdersByPatient(userID){
     return await db.Orders.findAll({where: {PatientID:userID}})
 }
+async function getOrdersByClinicAndPatient(clinicId,userID){
+    return await db.Orders.findAll({where: {OrganizationID:clinicId,PatientID:userID}})
+}
 async function getOrdersByOrganization(organizationID){
     return await db.sequelize.query(`select orders.id,patient.First_name,patient.Last_name, patient.Personal_number,orders.createdAt, orders.Status, organizations.Organization_name
     from orders left join users as patient on patient.id = orders.PatientID
@@ -52,5 +55,5 @@ async function getOrdersByOrganization(organizationID){
 }
 
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
-    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType,
+    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getOrdersByClinicAndPatient,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType,
     getOrdersById,getUsersById}

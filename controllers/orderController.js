@@ -23,17 +23,20 @@ async function postOrder(req,res) {
         res.status(500).send('Internal Server Error');
     }
 }
-async function getAllOrganization(req,res){
-    res.send(await db.getAllOrganization());
+async function getOrders(req,res){
+    const {patientId,clinicId}=req.query;
+    if(patientId !==undefined && clinicId !==undefined){
+        const orders = await db.getOrdersByClinicAndPatient(clinicId,patientId)
+        res.send(orders)
+    }
 }
 async function getOrderById(req,res){
     const {id}=req.params;
     const order = await db.getOrdersById(id)
-    console.log(order.PatientID)
     const patient = await db.getUsersById(order.PatientID)
     res.send({order:order,patient:patient});
 }
 
 module.exports={
-    postOrder,getOrderById,getAllOrganization
+    postOrder,getOrderById, getOrders
 }

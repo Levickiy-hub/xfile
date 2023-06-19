@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    await controller.getAllOrganization(req,res)
+    await controller.getOrders(req,res)
 });
 
 router.get('/:id', async (req, res) => {
