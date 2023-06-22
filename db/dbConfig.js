@@ -147,6 +147,22 @@ const Logins_BankID = sequelize.define(
     }
 )
 Logins_BankID.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
+const Templates = sequelize.define(
+    'Templates',
+    {
+        id:{type: Sequelize.INTEGER,
+            autoIncrement:true,
+            allowNull:false,
+            primaryKey: true
+        },
+        UserID: {type: Sequelize.INTEGER},
+        Templates: {type: Sequelize.STRING},
+    },
+    {
+        // Здесь определяются другие настройки модели
+    }
+)
+Templates.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>console.error(err.message))
 // Определение ассоциаций
 
 // Organizations.hasMany(Orders, { foreignKey: "OrganizationID", as: "orders" });
@@ -165,5 +181,5 @@ Logins_BankID.sync().then(r =>console.log('Logins_BankID Create')).catch(err=>co
 
 
 module.exports = {
-    sequelize, Users,Organizations,Orders,Cases,Resend,Logins_BankID
+    sequelize, Users,Organizations,Orders,Cases,Resend,Logins_BankID,Templates
 }

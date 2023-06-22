@@ -10,7 +10,15 @@ async function getUser(req,res){
     const {number}=req.query
     res.send(await db.getUserByBankId(number)|| null );
 }
-
+async function getTemplates(req,res){
+    const {id} = req.params
+    res.send(await db.getTemplateByUser(id));
+}
+async function createTemplates(req,res){
+    const {id} = req.params
+    const {templates} = req.body
+    res.send(await db.createTemplate(id,templates));
+}
 module.exports={
-    postUser,getAllUsers,getUser
+    postUser,getAllUsers,getUser,getTemplates,createTemplates
 }

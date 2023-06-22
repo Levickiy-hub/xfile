@@ -34,7 +34,11 @@ async function getOrderById(req,res){
     const {id}=req.params;
     const order = await db.getOrdersById(id)
     const patient = await db.getUsersById(order.PatientID)
-    res.send({order:order,patient:patient});
+    let creator = null;
+    if(order.Creator_UserID){
+        creator = await db.getCreatorOrder(order.Creator_UserID)
+    }
+    res.send({order:order,patient:patient,creator: creator[0][0]});
 }
 
 module.exports={

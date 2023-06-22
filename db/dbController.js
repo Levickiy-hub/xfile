@@ -54,6 +54,19 @@ async function getOrdersByOrganization(organizationID){
     left join organizations on organizations.id = creator.OrganizationID where orders.OrganizationID=${organizationID}`)
 }
 
+async function getCreatorOrder(creatorId){
+    return await db.sequelize.query(`select users.First_name,users.Last_name,users.Email,users.Position,users.Mob_number,organizations.Organization_name,
+organizations.Organization_number,organizations.Email as org_Email, organizations.Address1, organizations.Phone as org_Phone from users join organizations on users.OrganizationID = organizations.id where users.id=${creatorId}`)
+}
+async function getTemplateByUser(userId){
+    return await db.Templates.findAll({where:{UserID:userId}})
+}
+async function createTemplate(userId,text){
+    return await db.Templates.create({UserID:userId,Templates: text})
+}
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
-    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,getOrdersByClinicAndPatient,getUserByBankId,getOrganizationByName,getOrganizationById,getOrganizationByType,
-    getOrdersById,getUsersById}
+    getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,
+    getOrdersByClinicAndPatient,getUserByBankId,getOrganizationByName,
+    getOrganizationById,getOrganizationByType,
+    getOrdersById,getUsersById,getCreatorOrder,
+    getTemplateByUser,createTemplate}

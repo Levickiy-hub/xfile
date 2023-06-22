@@ -14,7 +14,10 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
-    await controller.getAllUsers(req,res)
+router.get('/:id/templates', async (req, res) => {
+    await controller.getTemplates(req,res)
+});
+router.post('/:id/templates', async (req, res) => {
+    await controller.createTemplates(req,res)
 });
 module.exports = router;
