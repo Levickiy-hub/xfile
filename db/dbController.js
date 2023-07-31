@@ -64,9 +64,24 @@ async function getTemplateByUser(userId){
 async function createTemplate(userId,text){
     return await db.Templates.create({UserID:userId,Templates: text})
 }
+async function createCase(orderId,filePdf,fileXray,message,userId){
+    return await db.Cases.create({ OrderID:orderId,
+        Files_pdf:filePdf,
+        Files_xray:fileXray,
+        Case_Message:message,
+        UserID:userId
+    });
+}
+
+async function updateOrderStatus(orderId,status){
+    return await db.Orders.update( { Status: status},
+        { where: { id: orderId } })
+}
+
 module.exports={getAllUsers,createUser,createOrganization,getAllOrganization,createOrder,
     getOrdersByOrganization,getOrdersByPatient,getOrdersByUser,
     getOrdersByClinicAndPatient,getUserByBankId,getOrganizationByName,
     getOrganizationById,getOrganizationByType,
     getOrdersById,getUsersById,getCreatorOrder,
-    getTemplateByUser,createTemplate}
+    getTemplateByUser,createTemplate,
+    createCase,updateOrderStatus}

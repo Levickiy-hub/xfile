@@ -1,5 +1,5 @@
 const db = require('../db/dbController')
-
+const {getFilesName} = require('../function/file')
 // Create patient if it doesn't exist
 async function getOrCreatePatient(user){
     let userDB=await db.getUserByBankId(user.PersonNumber)
@@ -61,12 +61,12 @@ async function getOrCreateUser(creator, organizationDB) {
     return creatorDB;
 }
 
-    function getMessageFile(messageFile) {
-        if (messageFile.length === 0) {
-            return null;
-        }
-        return messageFile.map(file => file.path).join('||');
-    }
+    // function getMessageFile(messageFile) {
+    //     if (messageFile.length === 0) {
+    //         return null;
+    //     }
+    //     return messageFile.map(file => file.path).join('||');
+    // }
 
 // Create order
 async function createOrder(clinicId,creatorDB={}, patientDB={}, type,proxy,messageFile, message, alertType, mailingAddress) {
@@ -75,10 +75,10 @@ async function createOrder(clinicId,creatorDB={}, patientDB={}, type,proxy,messa
         clinicId,
         patientDB.id,
         "",
-        getMessageFile(proxy),
+        getFilesName(proxy),
         type.toString(),
         message,
-        getMessageFile(messageFile),
+        getFilesName(messageFile),
         alertType.toString(),
         'wait',
         JSON.stringify(mailingAddress)

@@ -21,12 +21,15 @@ const usersRouter = require('./routes/usersRoute');
 const organizationsRouter = require('./routes/organizationRoute');
 const ordersRouter = require('./routes/orderRoute');
 const filesRouter = require('./routes/filesRoute');
+const casesRouter = require('./routes/casesRoute');
 //
 app.use('/api/1', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/organizations', organizationsRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/files', filesRouter);
+app.use('/api/cases', casesRouter);
+
 
 // Start the server
 app.listen(3002, () => {
