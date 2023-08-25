@@ -1,6 +1,6 @@
 const db = require('../db/dbController')
 const {sendMail} = require('../mailer/mailer')
-    //Дописать зависимоти кто заказывал организаия или пациент
+    //Дописать зависимоти кто за иликазывал организаия пациент
 async function sendAlert(orderId){
     try {
         const order = await db.getOrdersById(orderId);
