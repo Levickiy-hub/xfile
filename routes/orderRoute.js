@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const controller =require('../controllers/orderController')
+const passport = require('passport'); // Импортируйте модуль passport
+
+
+// Подключите стратегию JWT аутентификации
+router.use(passport.authenticate('jwt', { session: false }));
+
 
 router.post('/', async (req, res) => {
     await controller.postOrder(req,res)
